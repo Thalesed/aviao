@@ -8,7 +8,11 @@ public class Button : MonoBehaviour
     public void OnClick() 
     {
         Debug.Log("O botão foi pressionado!");
-        SceneManager.LoadScene("GameOver");
+        //SceneManager.LoadScene("GameOver");
+    }
+
+    public void func(){
+
     }
 
 }
