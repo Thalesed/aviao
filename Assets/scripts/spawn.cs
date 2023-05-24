@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
 
 public class spawn : MonoBehaviour
 {
@@ -15,19 +16,17 @@ public class spawn : MonoBehaviour
 
     private void Update()
     {
-        if(Random.Range(0, 255) == 1){
-            // Escolhe um objeto aleatório do array de objetos
+        if(Random.Range(0, 200) == 1){
 
             Vector3 spawnPosition;
             spawnPosition = transform.position + new Vector3(30f, 0f, 0);
 
-            // Instancia o objeto na posição aleatória
             Instantiate(gameObject, spawnPosition, Quaternion.identity);
-
         }
+
     }
     
     private void OnBecameInvisible(){
-         Destroy(gameObject, 1f);
+         Destroy(gameObject, 10f);
      }
 }

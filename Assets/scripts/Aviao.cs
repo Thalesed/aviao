@@ -4,12 +4,17 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Aviao : MonoBehaviour {
-    Rigidbody2D fisica;
-    public int speed;
+    private Rigidbody2D fisica;
+    [SerializeField] private float forca = 6;
+    private Diretor diretor;
+    private Vector3 posicaoInicial;
 
-    private void Awake()
-    {
+    private void Awake(){
+        this.diretor = GameObject.FindObjectOfType<Diretor>();
         this.fisica = this.GetComponent<Rigidbody2D>();
+    }
+     private void Start(){
+        this.diretor = GameObject.FindObjectOfType<Diretor>();
     }
 
     private void Update () { 
@@ -17,22 +22,21 @@ public class Aviao : MonoBehaviour {
         {
             this.Impulsionar();
         }
-        /*this.fisica.velocity = 
-            Vector2.right * speed;*/
     }
 
 
-    private void Impulsionar()
-    {
-        this.fisica.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
-        //transform.position += new Vector3(0f, this.speed * 10 * Time.deltaTime, 0f);
-    }
-    void OnCollisionEnter2D(Collision2D colisao){
-        SceneManager.LoadScene("GameOver");
+    private void Impulsionar(){
+        this.fisica.velocity = Vector2.zero;
+        this.fisica.AddForce(Vector2.up * this.forca,ForceMode2D.Impulse);
     }
 
-    private void OnBecameInvisible(){
-         Destroy(gameObject, 1f);
-         SceneManager.LoadScene("GameOver");
-     }
+       public void Reiniciar(){
+        this.transform.position = this.posicaoInicial;
+        this.fisica.simulated = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D colisao){
+        this.fisica.simulated = false;
+        this.diretor.FinalizarJogo();
+    }
 }
