@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
-    public void OnClick() 
-    {
-        Debug.Log("O botão foi pressionado!");
-        //SceneManager.LoadScene("GameOver");
+    public void update(){
+        if(Input.GetMouseButtonDown(0)){
+            SceneManager.LoadScene("SampleScene");
+            GameObject.Destroy(this.gameObject);
+        }
     }
-
-    public void func(){
-
+    public void OnMouseDown(){
+        GameObject.Destroy(this.gameObject);
     }
 
 }
