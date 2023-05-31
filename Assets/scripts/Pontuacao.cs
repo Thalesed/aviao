@@ -16,7 +16,7 @@ public class Pontuacao : MonoBehaviour {
     public void Update()
     {
         this.pontos++;
-        this.textoPontuacao.text = "Pontuação: " + this.pontos.ToString();
+        this.textoPontuacao.text = "Pontuação: " + (this.pontos / 100).ToString();
     } 
 
     public void Reiniciar(){
