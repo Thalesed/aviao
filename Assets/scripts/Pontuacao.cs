@@ -6,6 +6,7 @@ using TMPro;
 
 public class Pontuacao : MonoBehaviour {
     private int pontos;
+    public bool state = true; 
     [SerializeField] public TextMeshProUGUI textoPontuacao;
     private AudioSource audioPontuacao;
 
@@ -15,11 +16,13 @@ public class Pontuacao : MonoBehaviour {
 
     public void Update()
     {
-        this.pontos++;
+        if(this.state == true)
+            this.pontos++;
         this.textoPontuacao.text = "Pontuação: " + (this.pontos / 100).ToString();
     } 
 
     public void Reiniciar(){
+        this.state = true;
         this.pontos = 0;
         this.textoPontuacao.text = this.pontos.ToString();
     }
