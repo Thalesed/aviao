@@ -16,8 +16,10 @@ public class Pontuacao : MonoBehaviour {
 
     public void Update()
     {
-        if(this.state == true)
+        if(this.state == true){
             this.pontos++;
+            this.audioPontuacao.Play();
+        }
         this.textoPontuacao.text = "Pontuação: " + (this.pontos / 100).ToString();
     } 
 
