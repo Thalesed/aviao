@@ -29,6 +29,7 @@ public class Diretor : MonoBehaviour {
     } 
 
     public void ReiniciarJogo() {
+        SceneManager.LoadScene("SampleScene");
         this.point.Reiniciar();
         this.imagemGameOver.SetActive(false);
         Time.timeScale = 1;
